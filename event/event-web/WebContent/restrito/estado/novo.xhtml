@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+
+	<fieldset>
+		<legend>Dados de cadastro do Estado</legend>
+
+		<h:inputHidden value="#{estadoBean.editado.id}" />
+		<h:outputLabel value="Estado: " for="estado" />
+		<p:inputText value="#{estadoBean.editado.estado}" label="Estado"
+			id="estado" required="true" size="50" maxlength="50"
+			requiredMessage="o campo estado é obrigatório."
+			validatorMessage="Os caracteres do campo Estado é menor do que o mínimo permitido de 4 caracteres.">
+			<f:validateLength maximum="50" minimum="4" />
+		</p:inputText>
+		<br />
+		<h:outputLabel value="UF: " for="uf" />
+		<p:inputText value="#{estadoBean.editado.uf}" label="UF" id="uf"
+			required="true" size="2" maxlength="2"
+			requiredMessage="o campo uf é obrigatório."
+			validatorMessage="Os caracteres do campo UF é menor do que o mínimo permitido de 2 caracteres.">
+			<f:validateLength maximum="2" minimum="2" />
+		</p:inputText>
+		<br />
+		<p:commandButton value="Salvar" alt="Salvar" update=":tab_estado"
+			process="@parent" action="#{estadoBean.novo}"
+			rendered="#{empty estadoBean.editado.id}" />
+		<p:commandButton value="Alterar" alt="Salvar" update=":tab_estado"
+			oncomplete="editar_estado.hide()" process="@parent"
+			action="#{estadoBean.novo}"
+			rendered="#{!empty estadoBean.editado.id}" />
+	</fieldset>
+	
+</ui:composition>
+</html>

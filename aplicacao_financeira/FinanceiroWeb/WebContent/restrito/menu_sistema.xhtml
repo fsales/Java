@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<style type="text/css">
+		.botao{
+			height:2em;
+		}
+	</style>
+	<sec:ifAnyGranted roles="ROLE_USUARIO">
+		<h:form id="menu">
+			<table width="100%">
+				<tr>
+					<td>
+						<p:commandButton action="/restrito/conta" value="Contas" immediate="true" ajax="false" styleClass="botao"  />
+						<p:commandButton action="/restrito/categoria" value="Categorias" immediate="true" ajax="false" styleClass="botao" />
+						<p:commandButton action="/restrito/lancamento" value="Lançamentos" immediate="true" ajax="false" styleClass="botao"/>
+						<p:commandButton action="/restrito/cheque" value="Cheque" immediate="true" ajax="false" styleClass="botao"/>
+						<p:commandButton action="/restrito/acao" value="Ação" immediate="true" ajax="false" styleClass="botao"/>
+						<h:selectOneMenu value="#{contextoBean.contaAtiva.conta}"
+							valueChangeListener="#{contextoBean.setContaAtiva}"
+							rendered="#{!empty contextoBean}" onchange="submit()">
+							<f:selectItems value="#{contaBean.lista}" var="conta"
+								itemValue="#{conta.conta}" itemLabel="#{conta.descricao}" />
+						</h:selectOneMenu>
+						
+						
+					</td>
+
+					<td align="left" >
+						<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+							<p:commandLink action="/admin/principal" title="Administrativo" immediate="true" ajax="false" >
+								<h:graphicImage library="imagens" name="administrativo16.png" />
+							</p:commandLink>
+						</sec:ifAnyGranted> 
+						<p:commandLink action="/restrito/principal" title="Principal" immediate="true" ajax="false" >
+							<h:graphicImage library="imagens" name="principal16.png" />
+						</p:commandLink> 
+						<h:outputLink value="javascript:void(0)"
+							onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+							title="Sair" immediate="true">
+							<h:graphicImage library="imagens" name="logout16.png" />
+						</h:outputLink>
+					</td>
+				</tr>
+			</table>
+		</h:form>
+	</sec:ifAnyGranted>
+</ui:composition>
+</html>

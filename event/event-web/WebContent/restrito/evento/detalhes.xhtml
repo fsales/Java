@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h:form>
+		<p:fieldset legend="Dados Evento">
+			
+			<h:outputLabel value="Nome: " for="nome" />
+			<p:inputText value="#{eventoBean.editado.nome}" id="nome"
+				label="Nome" size="80" readonly="true" />
+			<br />
+			<h:outputLabel value="Data ínicio: " for="data_inicio" />
+			<p:inputText value="#{eventoBean.editado.dataInicio}"
+				id="data_inicio" label="Data Inicio" readonly="true">
+				<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+			</p:inputText>
+			<br />
+			<h:outputLabel value="Data témino: " for="data_termino" />
+			<p:inputText value="#{eventoBean.editado.dataTermino}"
+				id="data_termino" label="Data Inicio" readonly="true">
+				<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+			</p:inputText>
+
+
+			<br />
+			<h:outputLabel value="Descrição: " for="descricao" />
+			<p:inputTextarea id="descricao"
+				value="#{eventoBean.editado.descricao}" label="Descrição" rows="15"
+				cols="82" autoResize="false" readonly="true" />
+
+			<p:fieldset legend="Endereço">
+				
+				<h:outputLabel value="Logradouro: " for="logradouro" />
+				<p:inputText value="#{eventoBean.editado.endereco.logradouro}"
+					id="logradouro" label="Logradouro" size="80" readonly="true" />
+				<br />
+				<h:outputLabel value="Número: " for="numero" />
+				<p:inputText value="#{eventoBean.editado.endereco.numero}"
+					id="numero" label="Número" readonly="true" size="20" />
+				<br />
+				<h:outputLabel value="CEP: " for="cep" />
+				<p:inputText id="cep" value="#{eventoBean.editado.endereco.cep}"
+					size="10" readonly="true" />
+				<br />
+				<h:outputLabel value="Complemento" for="complemento" />
+				<p:inputText value="#{eventoBean.editado.endereco.complemento}"
+					label="Complemento" id="complemento" size="80" readonly="true" />
+
+
+				<h:outputLabel value="Estado: " for="estado" />
+				<p:inputText id="estado"
+					value="#{eventoBean.editado.cidade.estado.estado}" readonly="true"
+					label="Estado" />
+				<br />
+				<h:outputLabel value="Cidade: " for="cidade" />
+				<p:inputText id="cidade" value="#{eventoBean.editado.cidade.cidade}"
+					readonly="true" label="Cidade" />
+
+				<br />
+			</p:fieldset>
+			<p:fieldset legend="Contato">
+				
+
+				<h:outputLabel value="e-Mail: " for="email" />
+
+				<p:inputText value="#{eventoBean.editado.contato.email}"
+					label="e-Mail" id="email" size="80" maxlength="50" readonly="true" />
+				<br />
+				<h:outputLabel value="Telefone: " for="telefone" />
+				<p:inputText value="#{eventoBean.editado.contato.telefone}"
+					id="telefone" label="Telefone" readonly="true" />
+				<br />
+				<h:outputLabel value="Fax: " for="fax" />
+				<p:inputText value="#{eventoBean.editado.contato.fax}" id="fax"
+					label="Fax" readonly="true" />
+				<br />
+				<h:outputLabel value="Celular: " for="celular" />
+				<p:inputText value="#{eventoBean.editado.contato.celular}" id="celular"
+					label="Fax" readonly="true" />
+
+			</p:fieldset>
+
+		</p:fieldset>
+		<p:commandButton value="Fechar" onclick="detalhes.hide()"/>
+	</h:form>
+</ui:composition>
+</html>

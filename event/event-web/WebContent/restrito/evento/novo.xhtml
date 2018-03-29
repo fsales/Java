@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h:form id="form_novo_evento">
+		<h:inputHidden value="#{eventoBean.editado.id}" />
+		<fieldset>
+			<legend>Dados Evento</legend>
+			<h:outputLabel value="Nome: " for="nome" />
+			<p:inputText value="#{eventoBean.editado.nome}" id="nome"
+				label="Nome" required="true" size="80">
+				<f:validateLength minimum="5" />
+			</p:inputText>
+			<br />
+			<h:outputLabel value="Data ínicio: " for="data_inicio" />
+			<p:calendar value="#{eventoBean.editado.dataInicio}" id="data_inicio"
+				label="Data Inicio" required="true" locale="pt_BR"
+				pattern="dd/MM/yyyy" />
+			<br />
+			<h:outputLabel value="Data término: " for="data_termino" />
+			<p:calendar value="#{eventoBean.editado.dataTermino}"
+				id="data_termino" label="Data Inicio" required="true" locale="pt_BR"
+				pattern="dd/MM/yyyy" />
+			<br />
+			<h:outputLabel value="Descrição: " for="descricao" />
+			<p:inputTextarea id="descricao"
+				value="#{eventoBean.editado.descricao}" label="Descrição" rows="15"
+				cols="82" required="true" autoResize="false" />
+
+			<fieldset>
+				<legend>Endereço</legend>
+				<h:outputLabel value="Logradouro: " for="logradouro" />
+				<p:inputText value="#{eventoBean.endereco.logradouro}"
+					id="logradouro" label="Logradouro" required="true" size="80" />
+				<br />
+				<h:outputLabel value="Número: " for="numero" />
+				<p:inputText value="#{eventoBean.endereco.numero}"
+					id="numero" label="Número" required="true" size="20" />
+				<br />
+				<h:outputLabel value="CEP: " for="cep" />
+				<p:inputMask mask="99.999-999" id="cep"
+					value="#{eventoBean.endereco.cep}" size="10" />
+				<br />
+				<h:outputLabel value="Complemento" for="complemento" />
+				<p:inputText value="#{eventoBean.endereco.complemento}"
+					label="Complemento" id="complemento" size="80" />
+				<h:outputLabel value="Estado: " for="estado" />
+				<p:selectOneMenu id="estado" value="#{cidadeBean.estado}"
+					required="true" label="Estado">
+					<f:selectItem itemLabel="Selecione" />
+					<f:selectItems value="#{estadoBean.list}" var="estado"
+						itemValue="#{estado}" itemLabel="#{estado.estado}" />
+					<f:ajax render="cidade" event="change"
+						listener="#{cidadeBean.listaCidadesPorUf}" />
+				</p:selectOneMenu>
+				<br />
+				<h:outputLabel value="Cidade: " for="cidade" />
+				<p:selectOneMenu id="cidade" value="#{eventoBean.editado.cidade}" required="true" label="Cidade">
+					<f:selectItem itemLabel="Selecione" />
+					<f:selectItems value="#{cidadeBean.cidadesPorUf}" var="cidades"
+						itemValue="#{cidades}" itemLabel="#{cidades.cidade}" />
+				</p:selectOneMenu>
+				<br />
+			</fieldset>
+			<fieldset>
+				<legend>Contato</legend>
+
+				<h:outputLabel value="e-Mail: " for="email" />
+				<h:panelGroup>
+					<p:inputText value="#{eventoBean.contato.email}"
+						label="e-Mail" id="email" size="80" maxlength="50" required="true"
+						validatorMessage="e-mail inválido">
+						<f:validateRegex pattern="[a-zA-Z0-9-\-\_\.]+@[a-zA-Z0-9-\-\_\.]+" />
+					</p:inputText>
+					<h:message for="email" />
+				</h:panelGroup>
+				<br />
+				<h:outputLabel value="Telefone: " for="telefone" />
+				<p:inputMask mask="(99) 9999-9999"
+					value="#{eventoBean.contato.telefone}" id="telefone"
+					label="Telefone" />
+				<br />
+				<h:outputLabel value="Fax: " for="fax" />
+				<p:inputMask mask="(99) 9999-9999"
+					value="#{eventoBean.contato.fax}" id="fax" label="Fax" />
+				<br />
+				<h:outputLabel value="Celular: " for="celular" />
+				<p:inputMask mask="(99) 9999-9999"
+					value="#{eventoBean.contato.celular}" id="celular"
+					label="Celular" />
+
+			</fieldset>
+			<p:commandButton value="Salvar" alt="Salvar" action="#{eventoBean.novo}" update=":tab_eventos" process="@parent"/>
+			
+			
+			
+		</fieldset>
+	</h:form>
+</ui:composition>
+</html>

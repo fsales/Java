@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">
+			Cadastro de Contas
+		</ui:define>
+
+	<ui:define name="corpo">
+
+		
+		<h:form id="edicao">
+			<!-- (1) -->
+			<p:messages />
+			<h:inputHidden value="#{contaBean.selecionada.conta}" />
+			<h:inputHidden value="#{contaBean.selecionada.favorita}" />
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Descrição: " for="descricao" />
+				<p:inputText id="descricao"
+					value="#{contaBean.selecionada.descricao}" required="true"
+					maxlength="45" requiredMessage="o campo descrição é obrigatório." />
+
+				<h:outputLabel value="Saldo Inicial: " for="saldoInicial" />
+				<p:inputText id="saldoInicial"
+					value="#{contaBean.selecionada.saldoInicial}" size="10">
+					<f:convertNumber minFractionDigits="2" />
+				</p:inputText>
+
+				<p:commandButton value="Salvar" action="#{contaBean.salvar}" process="@form"  update=":listagem :edicao :menu" ></p:commandButton>
+				
+				
+			</h:panelGrid>
+		</h:form>
+
+		<h:form id="listagem">
+			<!-- (2) -->
+			<h:dataTable value="#{contaBean.lista}" var="conta"
+				rendered="#{!empty contaBean.lista}">
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					#{conta.descricao}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data Cadastro</f:facet>
+					<h:outputText value="#{conta.dataCadastro}">
+						<f:convertDateTime dateStyle="medium" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Saldo Inicial</f:facet>
+					<h:outputText value="#{conta.saldoInicial}"
+						style="text-align: right; display:block;">
+						<f:convertNumber minFractionDigits="2" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<p:commandLink action="#{contaBean.tornarFavorita}" process="@this" update=":listagem ">
+						
+						<h:graphicImage library="imagens"
+							name="favorita16_#{conta.favorita}.png" />
+						<f:setPropertyActionListener target="#{contaBean.selecionada}"
+							value="#{conta}" />
+					</p:commandLink>
+				</h:column>
+				<h:column>
+					<p:commandLink process="@this" update=":edicao">
+						<h:graphicImage library="imagens" name="editar16.png" />
+						<f:setPropertyActionListener target="#{contaBean.selecionada}"
+							value="#{conta}" />
+					</p:commandLink>
+				</h:column>
+				<h:column>
+				
+					<p:commandLink action="#{contaBean.excluir}" process="@this" update=":listagem :menu" onclick="if(!confirm('Confirma a exculsão da conta #{conta.descricao}?'))return false;" >
+					
+						<h:graphicImage library="imagens" name="excluir16.png" />
+						<f:setPropertyActionListener target="#{contaBean.selecionada}"
+							value="#{conta}" />
+					</p:commandLink>
+					
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		
+		
+		<h:panelGrid columns="4">
+			<h:form id="impressao">
+				<h:commandLink>
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="1" />
+					<p:fileDownload value="#{contaBean.arquivoRetorno}" />
+					<h:graphicImage library="imagens" name="pdf.png"
+						title="Imprimir PDF" />
+				</h:commandLink>
+				<h:commandLink>
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="2" />
+					<p:fileDownload value="#{contaBean.arquivoRetorno}" />
+					<h:graphicImage library="imagens" name="excel.png"
+						title="Imprimir Excel" />
+				</h:commandLink>
+				<h:commandLink>
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="3" />
+					<p:fileDownload value="#{contaBean.arquivoRetorno}" />
+					<h:graphicImage library="imagens" name="html.png"
+						title="Imprimir HTML" />
+				</h:commandLink>
+				<h:commandLink>
+					<f:setPropertyActionListener target="#{contaBean.tipoRelatorio}"
+						value="4" />
+					<p:fileDownload value="#{contaBean.arquivoRetorno}" />
+					<h:graphicImage library="imagens" name="ods.png"
+						title="Imprimir Planilha Open Office" />
+				</h:commandLink>
+			</h:form>
+		</h:panelGrid>
+	</ui:define>
+</ui:composition>
+
+</html>

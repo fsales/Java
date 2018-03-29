@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/login_template.xhtml">
+
+
+	<ui:define name="msg">
+		<h:panelGroup rendered="#{!empty param.login_error}">
+			<div id="fail" class="info_div">
+
+				<span class="ico_cancel">Erro ao efetuar o login. Motivo:
+					#{SPRING_SECURITY_LAST_EXCEPTION.message}</span>
+
+
+			</div>
+		</h:panelGroup>
+	</ui:define>
+	<ui:define name="conteudo">
+
+		<form id="loginform" method="post"
+			action="${request.contextPath}/j_spring_security_check">
+
+			<h:panelGroup>
+				<label> <strong> Login: </strong>
+				</label>
+				<input type="text" name="j_username" id="user_login" size="28"
+					class="input" />
+				<br />
+				<label> <strong> Senha: </strong>
+				</label>
+				<input type="password" name="j_password" id="user_pass" size="28"
+					class="input" />
+				<br />
+				<label> <strong> Continuar conectado <input
+						type="checkbox" id="remember" class="_spring_security_remember_me" />
+				</strong></label>
+				<br />
+				<input id="save" class="loginbutton submit" type="submit"
+					value="Login" />
+				<br />
+			</h:panelGroup>
+
+
+		</form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

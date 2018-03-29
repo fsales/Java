@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><ui:insert name="titulo">EventWEB - Gerenciamento de Eventos.</ui:insert>
+	</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="nrobots" content="noindex,nofollow" />
+
+	<h:outputStylesheet library="css" name="style.css" media="all" />
+
+	<!-- JavaScript -->
+	<h:outputScript library="primefaces/jquery" name="jquery.js" />
+
+	<ui:insert name="head"></ui:insert>
+</h:head>
+<h:body>
+	<f:view locale="pt_BR">
+		<div class="container" id="container">
+			<div id="header">
+				<ui:insert name="header">
+					<ui:include src="include/header.xhtml" />
+				</ui:insert>
+			</div>
+			<!-- end header -->
+			<div id="content">
+				<div id="top_menu" class="clearfix">
+					<ui:insert name="menu">
+						<ui:include src="/restrito/menu.xhtml" />
+					</ui:insert>
+				</div>
+				<div id="content_main" class="clearfix">
+					<div id="main_panel_container" class="left">
+						<div class="section">
+							<ui:insert name="conteudo">
+								<ui:include src="include/conteudo.xhtml" />
+							</ui:insert>
+						</div>
+
+					</div>
+					<div id="sidebar" class="right">
+						<ui:insert name="sidebar">
+
+							<ui:include src="/restrito/sidebar.xhtml" />
+						</ui:insert>
+
+					</div>
+				</div>
+			</div>
+			<!-- end #content -->
+			<div id="footer" class="clearfix">
+				<p style="text-align: center;">
+					EventWEB - Gerenciamento de Eventos. <br />© 2012 Todos os
+					direitos reservados.
+				</p>
+			</div>
+			<!-- end #footer -->
+		</div>
+		<!-- end container -->
+	</f:view>
+</h:body>
+</html>

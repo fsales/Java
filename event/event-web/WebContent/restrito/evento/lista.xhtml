@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h:form id="form_lista" prependId="false">
+		<fieldset>
+			<legend>Lista de Eventos</legend>
+			<p:dataTable id="table_eventos" var="evento"
+				value="#{eventoBean.lista}" rendered="#{!empty eventoBean.lista}">
+				<p:column sortBy="#{evento.id}">
+					<f:facet name="header">Id &nbsp; </f:facet>
+					<h:outputText value="#{evento.id}" />
+				</p:column>
+				<p:column sortBy="#{evento.nome}">
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{evento.nome}" />
+				</p:column>
+				<p:column sortBy="#{evento.dataInicio}">
+					<f:facet name="header">Data ínicio</f:facet>
+					<h:outputText value="#{evento.dataInicio}">
+						<f:convertDateTime dateStyle="medium" />
+					</h:outputText>
+				</p:column>
+				<p:column sortBy="#{evento.dataTermino}">
+					<f:facet name="header">Data término</f:facet>
+					<h:outputText value="#{evento.dataTermino}">
+						<f:convertDateTime dateStyle="medium" />
+					</h:outputText>
+				</p:column>
+				<p:column sortBy="#{evento.contato.email}">
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{evento.contato.email}"/>
+						
+					
+				</p:column>
+				<p:column style="width:60px">
+					<f:facet name="header"> - </f:facet>
+
+					<p:commandLink action="#{eventoBean.excluir}" process="@this"
+						update="@form"
+						onclick="if(!confirm('Confirma a exclusão do evento #{evento.nome}?')) return false;">
+						<f:setPropertyActionListener target="#{eventoBean.editado}"
+							value="#{evento}" />
+						<h:graphicImage name="excluir16.png" library="img/icone"
+							alt="Excluir" title="Excluir" />
+					</p:commandLink>
+					&nbsp;
+					<p:commandLink   update=":tab_eventos" >
+						<f:setPropertyActionListener target="#{eventoBean.contato}" value="#{evento.contato}" />
+						<f:setPropertyActionListener target="#{eventoBean.endereco}" value="#{evento.endereco}"/>
+						
+						
+						<f:setPropertyActionListener target="#{eventoBean.editado}" value="#{evento}" />					
+						
+								<h:graphicImage name="editar16.png" library="img/icone"
+							alt="Editar" title="Editar" />
+			
+			
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</fieldset>
+	</h:form>
+</ui:composition>
+</html>

@@ -1,0 +1,3 @@
+java.util.List = java.util.ArrayList
+java.util.Map = java.util.HashMap
+estudo.alura.carregar.dinamico.IExemplo = estudo.alura.carregar.dinamico.ExemploImpl

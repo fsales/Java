@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<div id="dialog" title="Welcome">
+		<p>Bem vindo!!!!!!!!!!</p>
+	</div>
+	<div id="success" class="info_div">
+		<span class="ico_success">Yeah! Success!</span>
+	</div>
+	<div id="fail" class="info_div">
+		<span class="ico_cancel">Ups, there was an error</span>
+	</div>
+	<div id="warning" class="info_div">
+		<span class="ico_error">Ups, you miss something</span>
+	</div>
+	<h1>Header h1</h1>
+	<h2>Header h2</h2>
+	<h3>Header h3</h3>
+	<h4>Header h4</h4>
+	<h5>Header h5</h5>
+	<ul>
+		<li>Element of unordered list</li>
+		<li>Element of unordered list</li>
+		<li>Element of unordered list</li>
+	</ul>
+	<ol>
+		<li>Element of ordered list</li>
+		<li>Element of ordered list</li>
+		<li>Element of ordered list</li>
+	</ol>
+
+	<p class="info">
+		Info paragraph. That's <em>em</em> and here is <strong>strong</strong>.
+		And some <small>small text</small>
+	</p>
+	<hr />
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Form</a></li>
+			<li><a href="#tabs-2">Table</a></li>
+
+
+		</ul>
+		<div id="tabs-1">
+			<form action="post" method="post" accept-charset="utf-8">
+				<fieldset>
+					<legend>
+						<span>Internet Browsers</span>
+					</legend>
+					<input type="radio" name="browser" class="noborder" />Internet
+					Explorer<br /> <input type="radio" name="browser" class="noborder" />Netscape
+					Navigator<br /> <input type="radio" name="browser"
+						class="noborder" />Opera <br /> <br /> <label><input
+						type="text" value="Short" /></label> <label><input type="text"
+						value="Medium" size="60" /></label> <label><input type="text"
+						value="Long" size="90" /></label> <br /> <input type="submit"
+						value="Continue" /> <br />
+					<button>This is a button</button>
+
+				</fieldset>
+
+			</form>
+
+		</div>
+		<div id="tabs-2">
+
+
+			<div class="tabledata">
+				<h2 class="ico_mug">Table data</h2>
+				<table id="table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="noborder" /></th>
+							<th>Date</th>
+							<th>Title</th>
+							<th>Category</th>
+							<th>Actions</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 23, 2009</td>
+							<td class="table_title"><a href="#">Something like post
+							</a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+							</a></td>
+							<td><span class="approved">Approved</span></td>
+						</tr>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 22, 2009</td>
+							<td class="table_title"><a href="#">Another thing </a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+
+							</a></td>
+							<td><span class="approved">Approved</span></td>
+						</tr>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 21, 2009</td>
+							<td class="table_title"><a href="#">And this is also a
+									post </a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+
+							</a></td>
+							<td><span class="ico_pending">Pending</span></td>
+						</tr>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 21, 2009</td>
+							<td class="table_title"><a href="#">And this is also a
+									post </a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+
+							</a></td>
+							<td><span class="ico_pending">Pending</span></td>
+						</tr>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 21, 2009</td>
+							<td class="table_title"><a href="#">And this is also a
+									post </a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+
+							</a></td>
+							<td><span class="ico_pending">Pending</span></td>
+						</tr>
+						<tr>
+							<td class="table_check"><input type="checkbox"
+								class="noborder" /></td>
+							<td class="table_date">April 21, 2009</td>
+							<td class="table_title"><a href="#">And this is also a
+									post </a></td>
+							<td><a href="#">Webdesign, Life, Custom</a></td>
+							<td><a href="#"> <h:graphicImage library="img"
+										name="accept.jpg" alt="accepted" />
+
+
+							</a> <a href="#"> <h:graphicImage library="img" name="cancel.jpg"
+										alt="cancel" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="folder.jpg"
+										alt="folder" />
+
+							</a> <a href="#"> <h:graphicImage library="img" name="edit.jpg"
+										alt="edit" />
+
+
+							</a></td>
+							<td><span class="ico_pending">Pending</span></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="pagination">
+					<span class="pages">Page 1 of 3&#8201;</span> <span class="current">1</span>
+					<a href="#" title="2">2</a> <a href="#" title="3">3</a> <a href="#">&raquo;</a>
+				</div>
+			</div>
+			<!-- end #tabledata -->
+
+		</div>
+
+	</div>
+	<hr />
+</ui:composition>
+</html>

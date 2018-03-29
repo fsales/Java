@@ -1,0 +1,15 @@
+estrutura
+<ui:insert name="titulo">
+</ui:insert>
+<ui:insert name="head">
+</ui:insert>
+<ui:insert name="header">
+</ui:insert>
+<ui:insert name="menu">
+</ui:insert>
+<ui:insert name="menu_lateral">
+</ui:insert>
+<ui:insert name="conteudo">
+</ui:insert>
+<ui:insert name="sidebar">
+</ui:insert>

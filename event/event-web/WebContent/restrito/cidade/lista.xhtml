@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<fieldset>
+		<legend>Lista de Cidades</legend>
+		<p:dataTable id="table_cidade" var="cidade"
+			value="#{cidadeBean.lista}" rendered="#{!empty cidadeBean.lista}"
+			paginator="true" rows="10"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			<p:column sortBy="#{cidade.id}">
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{cidade.id}" />
+			</p:column>
+			<p:column sortBy="#{cidade.cidade}">
+				<f:facet name="header">Cidade</f:facet>
+				<h:outputText value="#{cidade.cidade}" />
+			</p:column>
+			<p:column sortBy="#{cidade.estado.estado}">
+				<f:facet name="header">Estado</f:facet>
+				<h:outputText value="#{cidade.estado.estado}" />
+			</p:column>
+			<p:column sortBy="#{cidade.estado.uf}">
+				<f:facet name="header">UF</f:facet>
+				<h:outputText value="#{cidade.estado.uf}" />
+			</p:column>
+			
+			<p:column style="width: 60px">
+				<f:facet name="header"> - </f:facet>
+				<p:commandLink action="#{cidadeBean.excluir}" process="@this" update="@form"
+				onclick="if(!confirm('Confirma a exclusão da cidade #{cidade.cidade}?')) return false;">
+					<f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{cidade}" />
+					<h:graphicImage library="img/icone" name="excluir16.png" />
+				</p:commandLink>
+				&nbsp;
+				<p:commandLink onclick="editar_cidade.show()" update=":edicao_estado">
+					<h:graphicImage library="img/icone" name="editar16.png" />
+					<f:setPropertyActionListener target="#{cidadeBean.cidade}" value="#{cidade}"/>
+				</p:commandLink>
+			</p:column>
+		</p:dataTable>
+	</fieldset>
+</ui:composition>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+
+	<h:form id="form_list" prependId="false" >
+		<fieldset>
+			<legend>Lista de Estados</legend>
+
+			<p:dataTable id="table_estado" var="estado"
+				value="#{estadoBean.list}" rendered="#{!empty estadoBean.list}"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+
+
+
+				<p:column sortBy="#{estado.id}">
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{estado.id}" />
+				</p:column>
+				<p:column sortBy="#{estado.estado}">
+					<f:facet name="header">Estado</f:facet>
+					<h:outputText value="#{estado.estado}" />
+				</p:column>
+				<p:column sortBy="#{estado.uf}">
+					<f:facet name="header">UF</f:facet>
+					<h:outputText value="#{estado.uf}" />
+				</p:column>
+				<p:column style="width:60px" >
+					<f:facet name="header"> - </f:facet>
+
+					<p:commandLink action="#{estadoBean.excluir}" process="@this"
+						update="@form"
+						onclick="if(!confirm('Confirma a exclusão do estado #{estado.estado}?')) return false;">
+						<f:setPropertyActionListener target="#{estadoBean.editado}"
+							value="#{estado}" />
+						<h:graphicImage name="excluir16.png" library="img/icone"
+							alt="Excluir" title="Excluir" />
+
+					</p:commandLink>
+					&nbsp;
+					<p:commandLink  onclick="editar_estado.show()"   update=":edicao" >
+						<f:setPropertyActionListener target="#{estadoBean.editado}"
+							value="#{estado}" />
+								<h:graphicImage name="editar16.png" library="img/icone"
+							alt="Editar" title="Editar" />
+					</p:commandLink>
+
+
+
+				</p:column>
+			</p:dataTable>
+
+
+		</fieldset>
+
+	</h:form>
+	
+
+
+</ui:composition>
+</html>

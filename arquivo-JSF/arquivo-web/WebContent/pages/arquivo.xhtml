@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+	<h:head>
+		<meta http-equiv="Content-Type"
+			content="text/html; charset=ISO-8859-1" />
+		<link type="text/css" rel="stylesheet" href="dot-luv/skin.css" />
+		<title>Insert title here</title>
+	</h:head>
+	<h:body>
+
+		<p:growl id="msg" showDetail="true" />
+		<h:panelGrid title="Lista Arquivos">
+			<p:fieldset legend="Lista de Arquivos" toggleable="true"
+				id="fi_tabela">
+				<h:form prependId="false">
+					<p:dataTable id="tabela" var="upload" value="#{arquivo.arquivos}">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="ID" />
+							</f:facet>
+							<h:outputText value="#{upload.id}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nome Arquivo" />
+							</f:facet>
+							<h:outputText value="#{upload.arquivoFileName}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Content Type" />
+							</f:facet>
+							<h:outputText value="#{upload.arquivoContentType}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputLabel value="Download" />
+							</f:facet>
+							<h:commandLink title="download">
+								<p:graphicImage value="/images/download.gif" />
+
+								<f:setPropertyActionListener
+									target="#{arquivo.arquivoSelecionado}" value="${upload}" />
+								<p:fileDownload value="#{arquivo.file}" />
+							</h:commandLink>
+						</p:column>
+
+					</p:dataTable>
+					<br/>
+					<br/>
+					<p:commandButton value="Upload" actionListener="#{arquivo.prepararAdicionaArquivo}" update="infosUpload" oncomplete="dialogUpload.show()" />
+					
+					
+				</h:form>
+			</p:fieldset>
+		</h:panelGrid>
+
+
+		<p:dialog header="Upload de Arquivos" widgetVar="dialogUpload"
+			resizable="false" modal="true" showEffect="slide" width="500">
+			<h:form prependId="false">
+				<h:panelGrid id="infosUpload" columns="2" style="margin-bottom:10px">
+
+					<h:outputLabel for="upload" value="Upload:" />
+					<p:fileUpload id="upload" update="msg"
+					fileUploadListener="#{arquivo.upload}" multiple="true"
+					auto="true" label="Arquivo " cancelImage="/images/cancel.png"
+					customUI="true" />
+					
+					<p:commandButton update="tabela" oncomplete="dialogUpload.hide();" value="voltar" />
+					
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+
+	</h:body>
+</f:view>
+</html>

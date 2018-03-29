@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+
+	<h2 class="ico_mug">EventWEB</h2>
+
+	<h3>
+		<h:form>
+			<h:graphicImage library="img/icone" name="adicionar12.png" width="15" />
+			<p:commandLink value="Cadastrar novo evento"
+				title="Cadastrar novo evento" ajax="false" immediate="true"
+				action="/restrito/evento/evento" />
+		</h:form>
+	</h3>
+	<p:accordionPanel>
+		
+			<p:tab title="Eventos por UF" id="eventos_uf">
+				<div class="datalist-noborder">
+					<p:dataList value="#{eventoBean.eventosPorEstados}"
+						var="eventosEstado" type="none">
+							<h:column>
+							
+							
+						<ul>
+							<li>
+								<h:form>
+								<h:commandLink ajax="false" immediate="true" value="#{eventosEstado.uf}(#{eventosEstado.total})" action="#{eventoBean.eventosPorUf}" />
+								</h:form>
+							</li>
+
+						</ul>
+						</h:column>
+					</p:dataList>
+				</div>
+			</p:tab>
+
+			<p:poll interval="3" update="eventos_uf" />
+
+			<p:tab title="Eventos por Mês" id="eventos_mes">
+				<ul>
+					<li><a href="#">Janeiro(20)</a></li>
+
+				</ul>
+			</p:tab>
+		
+	</p:accordionPanel>
+
+
+
+
+</ui:composition>
+</html>

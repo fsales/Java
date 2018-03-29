@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/interno.xhtml">
+	<ui:define name="conteudo">
+		<h2>Cadastre Novo Evento</h2>
+		<p class="info">Cadastro de novos eventos</p>
+		<br />
+		<p:messages showDetail="true" showSummary="true" autoUpdate="true" />
+		<br />
+		<p:tabView id="tab_eventos">
+			<p:tab title="Edição" id="novo_evento">
+				<ui:include src="novo.xhtml" />
+			</p:tab>
+			<p:tab title="Listagem - Manutenção" id="lista_eventos">
+				<ui:include src="lista.xhtml" />
+			</p:tab>
+
+		</p:tabView>
+
+		<p:dialog widgetVar="editar_eventos" header="Editar Evento"
+			resizable="false" modal="true" height="640" width="700">
+			<h:panelGroup id="evento">
+
+				<h:form>
+					<ui:include src="novo.xhtml" />
+				</h:form>
+			</h:panelGroup>
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>
+</html>

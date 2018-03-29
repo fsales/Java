@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:component>
+	<h:form prependId="false">
+		<p:menubar>
+			<p:menuitem value="Home" action="/restrito/principal?faces-redirect=true" ajax="false" immediate="true" process="@this"  />
+			<p:submenu label="Gerenciamento" icon="ui-icon-gear">
+				
+				<p:menuitem value="Estado" icon="ui-icon-folder-open" action="/restrito/estado/estado?faces-redirect=true" ajax="false" immediate="true" process="@this" />
+				<p:menuitem value="Cidade" icon="ui-icon-folder-open" action="/restrito/cidade/cidade?faces-redirect=true" ajax="false" immediate="true" process="@this" />
+				<!-- 
+				<p:submenu label="Usuário">
+					<p:menuitem value="Editar" action="/restrito/estado/estado?faces-redirect=true?faces-redirect=true" immediate="true" process="@this" />					
+				</p:submenu>
+				 -->
+			</p:submenu>
+			<p:menuitem value="Eventos" icon="ui-icon-folder-open" action="/restrito/evento/evento?faces-redirect=true" immediate="true" process="@this" />
+			
+		</p:menubar>
+		
+	</h:form>
+</ui:component>
+</html>

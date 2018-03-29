@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition>
+	<h:form>
+
+
+		<p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"
+			showSummary="true" />
+
+		<p:dataGrid columns="1" value="#{eventoBean.eventosFuturos}"
+			id="list_eventos" var="eventos" rows="5" paginator="true"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15,20">
+
+			<p:column>
+
+				<h1 class="ico_mug">#{eventos.nome}</h1>
+				<div class="evento">
+
+					<div>
+						<h:graphicImage library="img" name="icone/ico_posts.png" />
+					</div>
+					<div>
+
+						<p:fieldset legend="Data e Local do evento">
+							<h4>
+								Data ínicio:
+								<h:outputText value="#{eventos.dataInicio}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+								- Data témino:
+								<h:outputText value="#{eventos.dataTermino}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+
+							</h4>
+							<h3>
+								<h:outputText value="#{eventos.cidade.cidade}" />
+								<br /> <strong> <h:outputLabel
+										value=" #{eventos.cidade.estado.estado} - #{eventos.cidade.estado.uf}" />
+								</strong>
+							</h3>
+						</p:fieldset>
+						<p:fieldset legend="Descrição">
+
+							<h:outputText value="#{eventos.descricao}" />
+
+						</p:fieldset>
+						<p:commandButton value="Eu vou" update="@form"
+							action="#{eventoBean.participar()}" onclick="if(!confirm('deseja fazer a inscrição no evento #{eventos.nome}?'))return false;" >
+							<f:setPropertyActionListener target="#{eventoBean.editado}"
+								value="#{eventos}"></f:setPropertyActionListener>
+						</p:commandButton>
+						<p:commandButton onclick="detalhes.show()" value="Detalhes"
+							update=":dialog_detalhes">
+							<f:setPropertyActionListener target="#{eventoBean.editado}"
+								value="#{eventos}"></f:setPropertyActionListener>
+						</p:commandButton>
+					</div>
+				</div>
+
+			</p:column>
+
+		</p:dataGrid>
+
+	</h:form>
+
+	<p:dialog widgetVar="detalhes" header="Detalhes" resizable="false"
+		modal="true" height="640" width="700" >
+		<h:panelGroup id="dialog_detalhes">
+			<h2>
+				Detalhes do Evento:
+				<h:outputText value="#{eventoBean.editado.nome}" />
+			</h2>
+			
+			<ui:include src="detalhes.xhtml"/>
+			
+		</h:panelGroup>
+	</p:dialog>
+
+</ui:composition>
+
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<fieldset>
+		<legend>Dados do Cadastro de Cidade</legend>
+
+		<h:inputHidden value="#{cidadeBean.cidade.id}" />
+		<h:outputLabel value="Estado" for="estado" />
+		<p:selectOneMenu value="#{cidadeBean.cidade.estado.id}" id="estado"
+			required="true" effect="fade"
+			requiredMessage="o campo estado é obrigatório.">
+			<f:selectItem itemLabel="Selecione o estado" itemValue="" />
+			<f:selectItems value="#{estadoBean.list}" var="estado"
+				itemLabel="#{estado.estado}" itemValue="#{estado.id}" />
+		</p:selectOneMenu>
+
+
+		<h:outputLabel value="Cidade" for="cidade" />
+		<p:inputText value="#{cidadeBean.cidade.cidade}" id="cidade"
+			required="true" size="50"
+			requiredMessage="o campo estado é obrigatório."
+			validatorMessage="Os caracteres do campo Estado é menor do que o mínimo permitido de 4 caracteres.">
+			<f:validateLength minimum="4" />
+		</p:inputText>
+		<br />
+		<p:commandButton value="Salvar" alt="Salvar" action="#{cidadeBean.novo}" update=":tab_cidade" process="@form" rendered="#{empty cidadeBean.cidade.id}" />
+		
+		<p:commandButton value="Alterar" alt="Alterar" update=":tab_cidade" oncomplete="editar_cidade.hide()" process="@parent" action="#{cidadeBean.novo}" rendered="#{!empty cidadeBean.cidade.id}" />
+	</fieldset>
+</ui:composition>
+</html>

@@ -1,0 +1,16 @@
+Estrutura do template login
+<ui:insert name="titulo">
+
+</ui:insert>
+<ui:insert name="head">
+
+</ui:insert>
+<ui:insert name="logo">
+
+</ui:insert>
+<ui:insert name="msg">
+
+</ui:insert>
+<ui:insert name="conteudo">
+
+</ui:insert>

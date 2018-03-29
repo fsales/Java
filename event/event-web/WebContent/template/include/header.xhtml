@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+	<div id="profile_info">
+		<h:graphicImage library="img" name="avatar.jpg" id="avatar"
+			alt="avatar" />
+
+		<p>
+			Bem vindo <strong>#{request.remoteUser}</strong>.
+			Nome <strong> #{contextoBean.usuarioLogado.nome}</strong> &nbsp;
+			<h:outputLink value="javascript:void(0)"
+				onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+				title="sair">
+				<h:graphicImage library="img" name="icone/logout16.png" />
+			</h:outputLink>
+			
+
+		</p>
+
+		<p class="last_login">Endereço IP : #{usuarioBean.ip}</p>
+	</div>
+	<div id="logo">
+		<h1>
+			<h:graphicImage library="img" name="logo.png" alt="EventWEB"  />
+		</h1>
+	</div>
+</ui:composition>
+</html>

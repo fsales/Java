@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<Resource 
+		name="jdbc/EventDB"
+		auth="Container"
+		type="javax.sql.DataSource"
+		maxActive="100"
+		maxIdle="30"
+		maxWait="1000"
+		username="fsales"
+		password="123"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/event?autoReconnect=true"
+		/> 
+</Context>

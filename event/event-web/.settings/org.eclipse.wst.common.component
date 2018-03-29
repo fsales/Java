@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="event-web">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="event-core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/event-core/event-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/event-web/build/classes"/>
+        <property name="context-root" value="eventweb"/>
+    </wb-module>
+</project-modules>

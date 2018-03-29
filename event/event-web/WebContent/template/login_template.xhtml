@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><ui:insert name="titulo">EventWEB - Gerenciamento de Eventos.</ui:insert></title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="noindex,nofollow" />
+
+
+
+	<h:outputStylesheet library="css" name="style.css" media="all" />
+
+
+
+	<!-- JavaScript -->
+	<h:outputScript library="primefaces/jquery" name="jquery.js" />
+	<h:outputScript>$=JQuery;</h:outputScript>
+
+	
+	<h:outputScript library="js" name="custom.js" />
+
+
+	<ui:insert name="head"></ui:insert>
+</h:head>
+<h:body>
+	<div id="login_container">
+		<div id="header">
+
+			<div id="logo_login">
+				<h1>
+					<ui:insert name="logo">
+
+						<h:graphicImage name="logo.png" library="img" alt="EventWEB" />
+					</ui:insert>
+				</h1>
+			</div>
+
+		</div>
+		<!-- end header -->
+
+		<div id="login" class="section">
+			<ui:insert name="msg">
+
+			</ui:insert>
+			<ui:insert name="conteudo">
+
+			</ui:insert>
+		</div>
+
+
+
+
+
+	</div>
+	<!-- end container -->
+</h:body>
+</html>

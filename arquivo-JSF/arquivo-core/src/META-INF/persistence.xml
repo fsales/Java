@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<class>dominio.Arquivo</class>
+		
+
+		<properties>
+
+			<!-- configuração do banco de dados -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="fsales" />
+			<property name="javax.persistence.jdbc.password" value="123" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/isisdoc" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+
+			<!-- somente em desenvolvimento
+			 <property name="hibernate.hbm2ddl.auto" 
+				value="create" /> -->
+			<!-- configuraçõa hibernate -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.max_fetch_depth" value="0" />
+
+			<property name="hibernate.default_batch_fetch_size" value="4" />
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+			<property name="hibernate.jdbc.batch_size" value="1000" />
+
+			<!-- configuração c3p0 <property name="hibernate.c3p0.acquire_increment" 
+				value="1" /> <property name="hibernate.c3p0.idle_test_period" value="100" 
+				/> <property name="hibernate.c3p0.max_size" value="100" /> <property name="hibernate.c3p0.max_statements" 
+				value="0" /> <property name="hibernate.c3p0.min_size" value="10" /> <property 
+				name="hibernate.c3p0.timeout" value="100" /> -->
+
+
+
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="oracle" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<class>dominio.Arquivo</class>
+		<properties>
+
+
+			<!-- configuração do banco de dados -->
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="javax.persistence.jdbc.user" value="isisdoc" />
+			<property name="javax.persistence.jdbc.password" value="123" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+
+			<!-- somente em desenvolvimento--> <property name="hibernate.hbm2ddl.auto" 
+				value="update" /> 
+
+			<!-- configuraçõa hibernate -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.max_fetch_depth" value="0" />
+
+			<property name="hibernate.default_batch_fetch_size" value="4" />
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+			<property name="hibernate.jdbc.batch_size" value="1000" />
+
+
+			<!-- configuração c3p0 
+			<property name="hibernate.c3p0.acquire_increment" value="1" />
+			<property name="hibernate.c3p0.idle_test_period" value="100" />
+			<property name="hibernate.c3p0.max_size" value="100" />
+			<property name="hibernate.c3p0.max_statements" value="0" />
+			<property name="hibernate.c3p0.min_size" value="10" />
+			<property name="hibernate.c3p0.timeout" value="100" />
+
+-->
+
+		</properties>
+	</persistence-unit>
+
+	
+</persistence>
